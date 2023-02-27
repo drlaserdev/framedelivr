@@ -16,7 +16,7 @@ def aboutpage():
 @views.route('upload/', methods=['GET','POST'])
 def upload():
     form = MediaForm()
-    if form.validate_on_submit():
+    if form.validate_on_submit() == True:
         f = form.file.data
         filename = secure_filename(f.filename)
         f.save(os.path.join('uploads/', filename))

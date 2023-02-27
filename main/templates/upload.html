@@ -4,9 +4,12 @@
 <div class="container">
     <form method="POST" enctype="multipart/form-data" class="position-absolute top-50 start-50 translate-middle border border-secondary rounded bg-light p-5 text-center">
         <h2 class="text-center">Simple anonymous media sharing!</h2>
-        <p class="text-center">Media files should not be bigger than 50 MB.</p>
+        <p class="text-center">Media files cannot be bigger than 50 MB.</p>
         {{ form.csrf_token }}
         {{ form.file(class='form-control my-3') }}
+        {% for error in form.file.errors %}
+        <p class="text-danger">{{ error }}</p>
+        {% endfor %}
         <button class="btn btn-primary" type="submit">Upload</button>
     </form>
 </div>
