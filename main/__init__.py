@@ -3,6 +3,7 @@ from secrets import choice as secrets_choice
 import string
 import os
 
+app = Flask(__name__)
 # Secret key length variables
 secretkeylength = 44
 
@@ -18,7 +19,6 @@ keyfile = open('temp/secretkey.txt', 'r')
 secretkey = keyfile.read()
 
 def create_app():
-    app = Flask(__name__)
     app.config['SECRET_KEY'] = secretkey
     app.config['UPLOAD_FOLDER'] = 'uploads/'
     from .views import views
